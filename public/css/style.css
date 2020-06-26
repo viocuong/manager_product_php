@@ -1,0 +1,211 @@
+/*color-link:#00aaff
+*/
+a.font-menu1 {
+    font-size: 1em;
+    font-family: "Roboto", sans-serif; }
+  
+  .cool-link {
+    padding: 0; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #ffffff; }
+  
+  .cool-link::after {
+    content: '';
+    display: block;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 0;
+    margin: auto;
+    height: 4px;
+    transition: width 0.1s; }
+  
+  .cool-link:hover::after {
+    width: 100%;
+    transition: width 0.6s; }
+  
+  a.logo {
+    padding: 0;
+    text-decoration: none;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+ }
+  
+  a.logo:hover {
+    text-decoration: none; }
+  
+  header {
+    height: auto;
+    border-bottom: 1px solid #441943;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  
+  @keyframes ltr {
+    from {
+      opacity: 0;
+      transform: translate3d(-100px, 50px, 0); }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0); } }
+  
+  @keyframes rtl {
+    from {
+      opacity: 0;
+      transform: translate3d(200px, 0, 0); }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0); } }
+  
+  @keyframes ttb {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0); }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0); } }
+  
+  @keyframes btt {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0); }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0); } }
+  
+  .rtl {
+    animation-name: rtl;
+    animation-duration: 1.1s; }
+  
+  .ltr {
+    animation-name: ltr;
+    animation-duration: 1.1s; }
+  
+  .ttb {
+    animation-name: ttb;
+    animation-duration: 1.1s; }
+  
+  .btt {
+    animation-name: btt;
+    animation-duration: 1.1s; }
+  
+  .bg-gradient {
+    background-color:#162447}
+  
+  footer {
+    background-color: #001133;
+    color: cornsilk;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px; }
+  
+  .footer-conten {
+    text-align: center;
+    font-size: 3em; }
+  
+  i.icon:hover {
+    color: #63ccff; }
+  
+  .dropdown-nav {
+    display: block;
+    position: relative; }
+  
+  .nav-menu li a {
+    text-decoration: none; }
+  
+  .dropdown-nav-content {
+    display: none;
+    position: absolute;
+    top: 29px;
+    min-width: 200px;
+    border-radius: 7px;
+    z-index: 1; }
+  
+  .dropdown-nav-content a:first-child {
+    border-radius: 6px 6px 0 0; }
+  
+  .dropdown-nav-content a:last-child {
+    border-radius: 0 0 6px 6px; }
+  
+  .dropdown-item {
+    background-color: #ffffff; }
+    .dropdown-item:hover {
+      background-color: #cccccc; }
+  
+  .dropdown-nav:hover .dropdown-nav-content {
+    display: block; }
+  
+  .a-link {
+    color: #ffffff;
+    text-decoration: none; }
+  
+  .dropdown:hover > .dropdown-menu {
+    display: block; }
+  
+  .dropdown-menu {
+    top: 90%; }
+  
+  .dropdown-item:focus, .dropdown-item:hover {
+    background-color: #e5dfdf; }
+  
+  @media only screen and (min-width: 1200px) {
+    .content {
+      border-right: 2px solid #645c84; } }
+  
+  .img-content {
+    width: 270px;
+    height: 270px;
+    vertical-align: middle;
+    margin: auto; }
+  .img-contentpost{
+    width: 550px;
+    height: auto;
+  }
+  @media only screen and (max-width: 576px) {
+    .img-content {
+      width: 150px;
+      height: 150px; }
+    .img-contentpost{
+      width: 150px;
+      height: 150px;
+    }
+  }
+  
+  .headding {
+    text-align: center;
+    color: #481380; }
+  
+  .btn_content {
+    font-size: 32px;
+    border-radius: 40px; }
+  
+  .Login {
+    background-color: #ffffff;
+    background-repeat: no-repeat; }
+  .img-post{
+    transition: transform 0.4s;
+  }
+  .img-post:hover{
+    transform: scale(1.08);
+    overflow: hidden;
+  }
+  p{
+    text-align: justify;
+  }
+  .headlogin{
+    background-color: #303960;
+    color: white;
+  }
+.buttonlogin{
+  background-color: #ff677d;
+}
+.bd{
+  border-top: 1px solid #A0A0A0;
+}
+.clblack{
+  color: #222831;
+}

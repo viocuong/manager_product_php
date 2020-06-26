@@ -1,0 +1,6 @@
+{
+    "html-css-class-completion.enableEmmetSupport": true,
+    "css.remoteStyleSheets": [
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      ]
+}
