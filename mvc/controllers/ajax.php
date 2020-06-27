@@ -7,9 +7,7 @@
         function viewAllProduct(){
             $res=$this->requireModel("productModel")->getAllProduct();
             $data=json_decode($res,true);
-            foreach($data as $key=>$value){
-                
-            }
+            $this->view('listproduct',['data'=>$data]);
         }
     }
 ?>

@@ -16,7 +16,7 @@
             $res= $this->md->getInfoAccount($this->user);
             $data=json_decode($res,true);
             $this->view('layout',['page'=>'account','data'=>$data]);
-            
+        
         }
         
     }

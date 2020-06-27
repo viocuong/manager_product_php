@@ -190,7 +190,7 @@ a.font-menu1 {
     transition: transform 0.4s;
   }
   .img-post:hover{
-    transform: scale(1.08);
+    transform: scale(1.1);
     overflow: hidden;
   }
   p{
@@ -208,4 +208,13 @@ a.font-menu1 {
 }
 .clblack{
   color: #222831;
+}
+.bgwhite{
+  background-color: #ffffff;
+}
+.clmilk{
+  color: #f4f4f4;
+}
+.bgproduct{
+  background-color: #364f6b;
 }

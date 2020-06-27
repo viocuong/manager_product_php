@@ -20,7 +20,6 @@
                     else echo "Nhân viên";
                 ?>
             </h4>
-
             <a href="./logout" class="m-4 btn btn-primary">Đăng xuất</a>
         </div>
     </div>
