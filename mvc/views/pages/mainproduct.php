@@ -41,17 +41,41 @@
 
         </div>
     </div>
-    
+
 
 </div>
 
 <div id="listproduct">
 </div>
 <script>
-    $("#inputsearch").keyup(function(){
-        var content=$(this).val();
-        $.post("./ajax/searchproduct",{ct:content},function(data){
+    $("#inputsearch").keyup(function() {
+        var content = $(this).val();
+        $.post("./ajax/searchproduct", {
+            ct: content
+        }, function(data) {
             $("#listproduct").html(data);
         });
+    });
+    $(document).ready(function() {
+        $("#userdk").keyup(function() {
+            var user = $(this).val();
+            $.post("./ajax/checkuser", {
+                ur: user
+            }, function(data) {
+                $("#messuser").html(data);
+            });
+        });
+        $("#viewproduct").click(function() {
+            $.post("./ajax/viewAllProduct", function(data) {
+                $("#listproduct").html(data);
+            });
+        });
+        $("#addproduct").click(function() {
+            $.post("./ajax/addProduct", function(data) {
+                $("#listproduct").html(data);
+            });
+        });
+
+
     });
 </script>
