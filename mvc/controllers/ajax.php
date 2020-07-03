@@ -18,7 +18,7 @@ class ajax extends Controller
     function addProduct()
     {
         $data = $this->requireModel('productModel')->getAllCagerories();
-        $this->viewajax('addproduct', ['cagetories' => $data]);
+        $this->viewajax('addProduct', ['cagetories' => $data]);
     }
     function proceedAddProduct()
     {
