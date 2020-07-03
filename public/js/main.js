@@ -7,4 +7,16 @@ $(document).ready(function() {
             $("#messuser").html(data);
         });
     });
+    $("#viewproduct").click(function() {
+        $.post("./ajax/viewAllProduct", function(data) {
+            $("#listproduct").html(data);
+        });
+    });
+    $("#addproduct").click(function(){
+        $.post("./ajax/addProduct",function(data){
+            $("#listproduct").html(data);
+        });
+    });
+    
+    
 });

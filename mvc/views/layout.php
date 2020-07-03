@@ -8,10 +8,8 @@
 
 <body class="Login" style="background-color: #e5e9f0;">
 <!---Header------------------------------------------------------------------------------------------------------->
-    <header class="d-flex bg-gradient flex-sm-row">
-        <div class="mr-auto rtl">
-            <a href="#" class="ml-3 logo rtl">Manager Product V99</a>
-        </div>
+    <header class="d-flex bg-gradient flex-sm-row justify-content-center p-2">
+        
         <div class="align-self-center p-2">
             <div id="menu" class="d-flex justify-content-end">
                 <a href="#" class="d-sm-none d-flex " style="text-decoration:none;">
@@ -25,28 +23,14 @@
                     class=" align-self-end navbar-nav-scroll navbar-expand-sm navbar-light justify-content-end p-0 d-none d-sm-flex">
                     <ul class="navbar-nav flex-column flex-sm-row d-flex" style="font-family: 'Roboto', sans-serif; ">
                         <li class="nav-item pr-3 d-flex">
-                            <a id="menubar" href="#" class="pl-0 mn nav-link font-menu1 cool-link ltr"
+                            <a id="menubar" href="./" class="pl-0 mn nav-link font-menu1 cool-link ltr"
                                 style="color:#ffffff;"><i class="d-none d-sm-block material-icons"
                                     style="color: #ffffff;vertical-align: middle;">house</i></a>
                         </li>
-                        <li class="nav-item pr-3 dropdown cool-link">
-                            <a id="menubar" href="#" class="mn nav-link font-menu1 p-0 ltr dropdown-toggle drop"
-                                data-toggle="dropdown" style="color:#ffffff;"><i class="material-icons"
-                                    style="vertical-align:middle">keyboard</i>Tutorials</a>
-                            <div class="dropdown-menu w-50">
-                                <a href="./post/python.html" class="dropdown-item">Python</a>
-                                <a href="./post/machinelearning.html" class="dropdown-item">Machine learning</a>
-                            </div>
-                        </li>
                         <li class="nav-item pr-3">
-                            <a id="a1" href="./post/security.html" class=" mn nav-link font-menu1 cool-link ltr" style="color:#ffffff;"><i
+                            <a id="a1" href="./homepage" class=" mn nav-link font-menu1 cool-link ltr" style="color:#ffffff;"><i
                                     class="material-icons"
-                                    style="color: #ffffff;vertical-align: middle;">fingerprint</i> Security</a>
-                        </li>
-                        <li class="nav-item pr-3">
-                            <a href="#" id="menubar" class="mn nav-link font-menu1 cool-link ltr"
-                                style="color:#ffffff;"><i class="material-icons"
-                                    style="vertical-align: middle;">event_note</i> News</a>
+                                    style="color: #ffffff;vertical-align: middle;">fingerprint</i> Quản lý</a>
                         </li>
                         <li class="nav-item pr-3 ltr">
                             <a href="./account" id="menubar" class="mn nav-link font-menu1 cool-link" style="color:#ffffff">

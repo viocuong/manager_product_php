@@ -14,6 +14,7 @@
                     if(!empty($resutl)){
                         $arr=$md->getData($username,$password);
                         $lever=$arr['lever'];
+                        $_SESSION['lever']=$lever;
                         $_SESSION['user']=$username;
                         header('Location: homepage');    
                     }

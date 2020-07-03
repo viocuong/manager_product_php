@@ -25,19 +25,10 @@
                 <p id="#checkrmail" style="color:red;"></p>
             </div>
             <button type="submit" class="btn buttonlogin w-100">Đăng ký</button>
-
+            
         </form>
     </div>
     <script>
-        $(document).ready(function() {
-            $("#userdk").keyup(function() {
-                var user = $(this).val();
-                $.post("./ajax/checkuser", {
-                    ur: user
-                }, function(data) {
-                    $("#messuser").html(data);
-                });
-            });
-        });
+        
     </script>
 </div>

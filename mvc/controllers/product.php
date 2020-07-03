@@ -8,5 +8,8 @@
         function default(){
             $this->view('layout',['page'=>'mainproduct']);
         }
+        function addproduct(){
+            
+        }
     }
 ?>

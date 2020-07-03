@@ -7,6 +7,9 @@
         public function view($view,$arr=[]){
             require_once './mvc/views/'.$view.'.php';    
         }
+        public function viewAjax($view,$arr=[]){
+            require_once './mvc/views/viewajax/'.$view.'.php';
+        }
 
     }
 ?>
