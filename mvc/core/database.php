@@ -2,8 +2,8 @@
     class DataBase{
         protected $conn;
         protected $servername="localhost";
-        protected $username="root";
-        protected $password="";
+        protected $username="cuongnguyen";
+        protected $password="cuong28021999";
         protected $dbname="bt3";
         function __construct()
         {
