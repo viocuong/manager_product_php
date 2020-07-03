@@ -27,9 +27,9 @@ class ajax extends Controller
         $name = $_POST['np'];
         $price = $_POST['pr'];
         $quantity = $_POST['ql'];
-        $sql = "insert into tbl_product(nameProduct,num,image,price,idCagetories) values('{$name}',{$quantity},'{$img}',{$price},{$idcagetories})";
-        $this->requireModel("productModel")->query($sql);
-        echo "<i style='color:#a8df65;font-size: 28px;' class='mt-3 fas fa-check-circle'> Thêm thành công sản phẩm {$name}</i>";
+        echo  "insert into tbl_product(nameProduct,num,image,price,idCagetories) values('{$name}',{$quantity},'{$img}',{$price},{$idcagetories})";
+        //$this->requireModel("productModel")->query($sql);
+        //echo "<i style='color:#a8df65;font-size: 28px;' class='mt-3 fas fa-check-circle'> Thêm thành công sản phẩm {$name}</i>";
     }
     function upload()
     {
