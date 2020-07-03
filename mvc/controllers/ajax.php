@@ -6,14 +6,13 @@ class ajax extends Controller
         $user = $_POST['ur'];
         echo $this->requireModel("accountModel")->checkAcount($user);
     }
-    function viewAllProduct($dt)
+    function viewAllProduct()
     {
-        $data=[];
-        if (!empty($dt)) $data = json_decode($dt,true);
-        else {
-            $res = $this->requireModel("productModel")->getAllProduct();
-            $data = json_decode($res, true);
-        }
+        $data = [];
+
+        $res = $this->requireModel("productModel")->getAllProduct();
+        $data = json_decode($res, true);
+
         $this->viewajax('listproduct', ['title' => 'Các sản phẩm', 'data' => $data]);
     }
     function addProduct()
@@ -59,44 +58,42 @@ class ajax extends Controller
     }
     function searchproduct()
     {
-        $sql="select * from tbl_product where nameProduct like '%{$_POST['ct']}%'";
-        $data=$this->requireModel("productModel")->getProduct($sql);
-        $res=[];
-        $res=json_decode($data,true);
+        $sql = "select * from tbl_product where nameProduct like '%{$_POST['ct']}%'";
+        $data = $this->requireModel("productModel")->getProduct($sql);
+        $res = [];
+        $res = json_decode($data, true);
         $this->viewajax('listproduct', ['title' => "Các sản phẩm cho từ khóa '{$_POST['ct']}'", 'data' => $res]);
-
     }
-    function detaiProduct($idproduct){
-        if(!empty($idproduct)){
-            $id=$idproduct;
-        } 
-        else $id= $_POST['id'];
-        
-        $res=json_decode($this->requireModel("productModel")->getAProduct($id),true);
+    function detaiProduct($idproduct)
+    {
+        if (!empty($idproduct)) {
+            $id = $idproduct;
+        } else $id = $_POST['id'];
+
+        $res = json_decode($this->requireModel("productModel")->getAProduct($id), true);
         //print_r($res) ;
-        $money=Functions::parse($res[0]['price']);
+        $money = Functions::parse($res[0]['price']);
         $this->viewajax('detailproduct', ['title' => "Chi tiết sản phẩm", 'data' => $res]);
     }
-    function deleteproduct(){
-        $idprd=$_POST['prd'];
+    function deleteproduct()
+    {
+        $idprd = $_POST['prd'];
         $this->requireModel("productModel")->delete($idprd);
         echo "<script> alert('Xóa sản phẩm thành công'); </script>";
         $this->viewAllProduct("");
-
     }
-    function proceedEditProduct(){
+    function proceedEditProduct()
+    {
         $name = $_POST['np'];
         $price = $_POST['pr'];
         $quantity = $_POST['ql'];
-        $id=$_POST['idpro'];
+        $id = $_POST['idpro'];
         $sql = "update tbl_product set nameProduct='{$name}',price={$price},num={$quantity} where idProduct={$id}";
         echo "<script> document.getElementsByTagName('BODY')[0].removeAttribute('class');</script>";
         echo "<script> document.getElementsByClassName('modal-backdrop fade show')[0].removeAttribute('class');</script>";
-        
+
         $this->requireModel("productModel")->query($sql);
         echo "<script> alert('Sửa sản phẩm thành công')</script>";
         $this->detaiProduct($id);
-
-
     }
 }
