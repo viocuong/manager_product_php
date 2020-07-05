@@ -35,12 +35,16 @@
             </div>
         </div>
     </a>
-    <div class="row w-100 mb-5 md-form mt-0">
-        <input id="inputsearch" class="form-control" type="text" placeholder="Tìm kiếm sản phẩm" aria-label="Search">
-        <div id="test" class="clblack">
-
+    <form class="row w-100 mb-5 md-form mt-0">
+        <div class="input-group">
+            <input id="inputsearch" type="text" class="form-control bg-light border-dark small" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
         </div>
-    </div>
+    </form>>
 
 
 </div>

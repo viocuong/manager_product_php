@@ -6,7 +6,7 @@
     ?>
 </head>
 
-<body class="Login" style="background-color: #e5e9f0;">
+<body class="Login pb-5 mb-5" style="background: linear-gradient(#e66465, #9198e5);background-repeat: no-repeat;">
 <!---Header------------------------------------------------------------------------------------------------------->
     <header class="d-flex bg-gradient flex-sm-row justify-content-center p-2">
         
@@ -55,8 +55,8 @@
                 </nav>
             </div>
     </header>
-    <div class="container">
-        <?php include('./mvc/views/pages/'.$arr['page'].'.php'); ?>
+    <div id="mainhome" class="container">
+        <?php if(isset($arr['page'])) include('./mvc/views/pages/'.$arr['page'].'.php'); ?>
 
     </div>
 

@@ -56,13 +56,14 @@ $data = $arr['data'][0];
                                             </div>
                                             <div class="from-group pt-3 pb-3 col-5">
                                                 <labelfor"spiner" class="clblack">Số lượng</label>
-                                                <input value="<?php echo $data['num'];?>" type="number" name="numberproduct" id="numberproduct" class="form-control" value="0" min="0" max="1000" step="1">
+                                                    <input value="<?php echo $data['num']; ?>" type="number" name="numberproduct" id="numberproduct" class="form-control" value="0" min="0" max="1000" step="1">
+                                                <p id="error" style="color:red;"></p>    
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class='modal-footer'>
-                                    <a id="submiteditproduct" class='btn btn-success'>Đồng ý</a>
+                                    <button id="submiteditproduct" class='btn btn-success'>Đồng ý</button>
                                     <button type='button' class='btn btn-danger' data-dismiss='modal'>Hủy</button>
                                 </div>
                             </div>
@@ -74,7 +75,35 @@ $data = $arr['data'][0];
                     <button id="btndeleteproduct" class="btn btn-danger w-50">Xóa</button>
                 </div>
                 <div class="col-4 d-flex p-2 justify-content-center">
-                    <button class="btn btn-outline-info w-100">Xuất sản phẩm</button>
+                    <button class="btn btn-outline-info w-100" data-toggle='modal' data-target='#ModalExport'>Xuất sản phẩm</button>
+                    <div class='modal fade' id='ModalExport' role='dialog'>
+                        <div class='modal-dialog'>
+
+                            <!-- Modal content-->
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <h4 class='modal-title'>Tài khoản <span style="color:red;"><?php echo $_SESSION['user'].' ';?></span>xuất sản phẩm <span style="color:red;"><?php echo $data['nameProduct']; ?></span></h4>
+                                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+
+                                </div>
+                                <div class='modal-body'>
+                                    <form id="formeditproduct" class="w-100">
+                                        <div class="row">
+                                            <div class="from-group pt-3 pb-3 col-12">
+                                                <labelfor"spiner" class="clblack">Số lượng</label>
+                                                <input id="numexport" type="number" name="numberproduct" class="form-control" value="0" min="0" max="1000" step="1">
+                                                <p style="color:red;" id="error2"></p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button id="submitexproduct" class='btn btn-success'>Xuất sản phẩm</button>
+                                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Hủy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,7 +113,29 @@ $data = $arr['data'][0];
     </script>
 </div>
 <script>
+    var check=0;
+    var val=0;
     $(document).ready(function() {
+        $("#numexport").on('keyup change',function(){
+            var max=<?php echo $data['num']; ?>;
+            var value=$(this).val();
+            if(value>max){
+                
+                $("#error2").html("số lượng không được vượt quá "+max);
+                $(this).addClass("border-danger");
+                val=value;
+                check=1;
+                
+            }
+            else{
+               
+                $("#error2").html("");
+                $(this).removeClass("border-danger");
+                val=value;
+                check=0;
+            }
+            
+        });
         $("#btndeleteproduct").click(function() {
             var lever = <?php echo $_SESSION['lever']; ?>;
             var idprd = <?php echo $data['idProduct'] ?>;
@@ -98,26 +149,30 @@ $data = $arr['data'][0];
                 });
             }
         });
-        $("#submiteditproduct").click(function(){
+        $("#submiteditproduct").click(function() {
             //var filename=$(".custom-file-input").val().split("\\").pop();
             //var loai=$("#cagetories1").val()[0];
-            
-            var nameprd=$("#nameproduct").val();
-            var price=$("#priceproduct").val();
-            var soluong=$("#numberproduct").val();
-            var idproduct=<?php echo $data['idProduct']; ?>;
-            $.post("./ajax/proceedEditProduct",
-            {
-                idpro:idproduct,
-                np:nameprd,
-                pr:price,
-                ql:soluong
-            },
-            function(data){
-                
-        
-                $("#listproduct").html(data);
-            });
+
+            var nameprd = $("#nameproduct").val();
+            var price = $("#priceproduct").val();
+            var soluong = $("#numberproduct").val();
+            var idproduct = <?php echo $data['idProduct']; ?>;
+            $.post("./ajax/proceedEditProduct", {
+                    idpro: idproduct,
+                    np: nameprd,
+                    pr: price,
+                    ql: soluong
+                },
+                function(data) {
+                    $("#listproduct").html(data);
+                });
         });
+        $("#submitexproduct").click(function(){
+            if(val>0 && check == 1) alert('Vui lòng nhập đúng số lượng');
+            else{
+                alert("OK");
+            }
+        });
+
     });
 </script>

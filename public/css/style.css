@@ -207,7 +207,7 @@ a.font-menu1 {
   border-top: 1px solid #A0A0A0;
 }
 .clblack{
-  color: #222831;
+  color: #393e46;
 }
 .bgwhite{
   background-color: #ffffff;
@@ -217,4 +217,15 @@ a.font-menu1 {
 }
 .bgproduct{
   background-color: #364f6b;
+}
+.btnrounded{
+  background-color: #035aa6;
+  
+  color: white;
+}
+.btnrounded:hover{
+  background-color: #3479b4;
+  
+  color: white;
+  box-shadow: 3px 4px 3px 4px #888888;
 }
