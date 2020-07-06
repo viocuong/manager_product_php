@@ -63,8 +63,18 @@ $data = $arr['data'][0];
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+    <script src="./rateit.js-master/scripts/jquery.rateit.js"></script>
+    <div class="row">
+        <div class="d-flex p-3" style="color:#e7305b;font-size: 28px;">
+            <p>Đánh giá sản phẩm</p> 
+            <div class="rateit">
+            </div>
+        </div>
+    </div>
+
     <script id="alert">
     </script>
 </div>
@@ -121,5 +131,6 @@ $data = $arr['data'][0];
                 alert("OK");
             }
         });
+        
     });
 </script>

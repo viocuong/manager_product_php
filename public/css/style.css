@@ -229,3 +229,11 @@ a.font-menu1 {
   color: white;
   box-shadow: 3px 4px 3px 4px #888888;
 }
+.btncart{
+  background-color: #4e73df;
+  border-radius: 15px;
+  border-left:15px solid #2753d6 ;
+}
+.btncart:hover{
+  box-shadow: 0.1px 4px 3px 4px #9c9c9c;;
+}

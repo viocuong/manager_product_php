@@ -1,4 +1,4 @@
-<div class="row main justify-content-center  ">
+<div class="row main justify-content-center p-5">
     <div class=" col-10 col-md-6 rounded pb-5 mb-5 m-md-5  shadow-lg rounded-sm">
         <div class="row d-flex justify-content-center p-3 headlogin">
             Đăng Nhập

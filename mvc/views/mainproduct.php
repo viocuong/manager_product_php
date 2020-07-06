@@ -4,7 +4,7 @@
         <i style="color: #40bad5; font-size: 48px;" class="fas fa-tachometer-alt"></i>
 
     </div>
-    <a id="addproduct" class="btn btn-danger col-md-3 mt-5 mb-5 rounded-lg m-1 shadow-lg">
+    <a id="addproduct" class="btn btncart col-md-3 mt-5 mb-5 rounded-lg m-1">
         <div class="row p-4 justify-content-center">
             </i>Nhập sản phẩm
         </div>
