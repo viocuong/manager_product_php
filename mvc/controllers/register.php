@@ -18,8 +18,7 @@
                 $dataUser['email']=$email=$_POST['email'];
                 if($user==""){$errors['erroruser']="không được để trống";$check=0;}
                 else $errors['erroruser']='';
-                if($user==""){$errors['errorfullname']="không được để trống";$check=0;}
-                else $errors['errorfullname']='';
+                
                 if($pass=="") { $errors['errorpass']="không được để trống"; $check=0;}
                 else $errors['errorpass']='';
                 if($repass=="") {$errors['errorrepass']="không được để trống";$check=0;}
