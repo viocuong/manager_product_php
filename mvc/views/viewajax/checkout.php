@@ -80,11 +80,11 @@ $_SESSION['sosp'] = count($data);
     var check = 0;
     var val = 0;
 
-    function deleteorder(id) {
+    function deletecart(id) {
         let idTd = '#delete' + id;
         let total = <?php echo $_SESSION['total']; ?>;
         let sosp = <?php echo $_SESSION['sosp']; ?>;
-        $.post('./ajax/deleteorder', {
+        $.post('./ajax/deletecart', {
             id: id,
             tt: total,
             sosp: sosp

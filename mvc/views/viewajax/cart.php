@@ -31,7 +31,7 @@ $_SESSION['sosp'] = count($data);
                         $_SESSION['total'] += $thanhtien;
                         $thanhtien = (string) Functions::parse($thanhtien);
                         echo "<tr id='delete{$key}'>
-                            <td scope='row'><a onclick='deleteorder({$key})' class='btn'><i style='color: red;font-size: 26px;' class='far fa-times-circle'></i></a></td>
+                            <td scope='row'><a onclick='deletecart({$key})' class='btn'><i style='color: red;font-size: 26px;' class='far fa-times-circle'></i></a></td>
                             <td class='row'>    <img src='{$data[$key]['img']}' width='120px' height='180px'></td>
                             <td>
                                 <div class='d-flex justify-content-center'>
@@ -76,11 +76,11 @@ $_SESSION['sosp'] = count($data);
             });
         });
     });
-    function deleteorder(id) {
+    function deletecart(id) {
         let idTd = '#delete' + id;
         let total = <?php echo $_SESSION['total']; ?>;
         let sosp = <?php echo $_SESSION['sosp']; ?>;
-        $.post('./ajax/deleteorder', {
+        $.post('./ajax/deletecart', {
             id: id,
             tt: total,
             sosp: sosp

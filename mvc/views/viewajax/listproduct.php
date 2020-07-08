@@ -1,4 +1,4 @@
-<div id="bodyproduct" class="clmilk mt-5 row justify-content-center bg-light rounded-lg shadow-lg mt-5 p-5 rtl">
+<div id="bodyproduct" class="clmilk mt-5 row justify-content-center bg-light rounded-lg shadow-lg mt-5 p-5">
     <div class="row card w-100 mb-5">
         <div class="clblack card-header d-flex justify-content-center">
             <h4 class="font-weight-bold"><?php echo $arr['title'] ?></h4>
@@ -9,7 +9,7 @@
     $data = $arr['data'];
     foreach ($data as $key => $value) {
         echo "
-            <a onclick='detailProduct({$data[$key]['idProduct']})' class='buttonproduct btn m-2 img-post col-3 p-4 bgproduct rounded-lg'>
+            <a onclick='detailProduct({$data[$key]['idProduct']})' class='rtl buttonproduct btn m-2 img-post col-3 p-4 bgproduct rounded-lg'>
                 <div class='row shadow-lg d-flex justify-content-center'>
                     <img class='rounded-lg' src='./public/image/{$data[$key]['image']}' alt='' height='280' width='230'>
                 </div>
@@ -25,7 +25,6 @@
                 </div>
             </a>";
     }
-
     ?>
 
 </div>

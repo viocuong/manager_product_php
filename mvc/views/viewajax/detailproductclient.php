@@ -66,17 +66,24 @@ $data = $arr['data'][0];
 
         </div>
     </div>
-    <script src="./rateit.js-master/scripts/jquery.rateit.js"></script>
+    <script src="./rateit/scripts/jquery.rateit.js"></script>
     <div class="row">
-        <div class="d-flex p-3" style="color:#e7305b;font-size: 28px;">
-            <p>Đánh giá sản phẩm</p> 
-            <div class="rateit">
-            </div>
+        <div class="pt-5" style="color:#e7305b;font-size: 28px;">
+            <p>Đánh giá sản phẩm</p>
         </div>
     </div>
-
-    <script id="alert">
-    </script>
+    <div class="row w-100 justify-content-center clblack pb-3">
+        Đánh giá của bạn cho sản phẩm này
+    </div>
+    <div class="row w-100 justify-content-center">
+        <div id="rate" class="rateit">
+        </div>
+    </div>
+    <div id="submitrate" class="w-100 d-flex justify-content-center p-2">
+        <button class="btn btnpink px-5 rounded-pill">Đánh giá</button>
+    </div>
+    <div class="clblack" id="alert">
+    </div>
 </div>
 <script>
     var check = 0;
@@ -131,6 +138,16 @@ $data = $arr['data'][0];
                 alert("OK");
             }
         });
-        
+        $("#submitrate").click(function() {
+            let star = $('#rate').rateit('value');
+            let idproduct = <?php echo $data['idProduct']; ?>;
+            $.post('./ajax/rate', {
+                star: star,
+                id: idproduct
+            }, function() {
+                alert('Cảm ơn bạn đã đánh giá '+star+'* cho sản phẩm này, chúng tôi ghi nhận đánh giá này để cải thiện sản phẩm');
+            });
+            
+        });
     });
 </script>

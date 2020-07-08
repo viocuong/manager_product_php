@@ -14,7 +14,7 @@
             </div>
         </div>
     </a>
-    <a id="viewproduct" class="btn btn-danger col-md-3 mt-5 mb-5 rounded-lg shadow-lg m-1">
+    <a id="viewproduct" class="btn btncart col-md-3 mt-5 mb-5 rounded-lg m-1">
         <div class="row p-4 justify-content-center">
             Xem sản phẩm
         </div>
@@ -24,17 +24,18 @@
             </div>
         </div>
     </a>
-    <a href="#" class="btn btn-danger col-md-3 mt-5 mb-5 rounded-lg m-1 shadow-lg">
+    <a id="order" class="btn btncart col-md-3 mt-5 mb-5 rounded-lg m-1">
+
         <div class="row p-4 justify-content-center">
-            Tiện ích
+            Đơn hàng
         </div>
         <div class="row p-3 bd d-flex justify-content-between m-0">
-            xem chi tiết
-            <div class="justify-content-end">
-                <i class="fas fa-arrow-circle-right"></i>
+            <div class="justify-content-center w-100">
+                <i style="font-size: 30px;" class="fas fa-file-invoice"></i>
             </div>
         </div>
     </a>
+
     <form class="row w-100 mb-5 md-form mt-0">
         <div class="input-group">
             <input id="inputsearch" type="text" class="form-control bg-light border-dark small" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" aria-describedby="basic-addon2">
@@ -45,13 +46,18 @@
             </div>
         </div>
     </form>>
-
-
 </div>
-
 <div id="listproduct">
 </div>
 <script>
+    $("#order").click(function(){
+        $.post('./ajax/orderpage',function(data){
+            $("#mainhome").html(data);
+        });
+    });
+    $.post("./ajax/viewAllProduct", function(data) {
+        $("#listproduct").html(data);
+    });
     $("#inputsearch").keyup(function() {
         var content = $(this).val();
         $.post("./ajax/searchproduct", {

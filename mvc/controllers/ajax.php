@@ -150,7 +150,7 @@ class ajax extends Controller
     {
         $this->viewAjax('cart');
     }
-    function deleteorder()
+    function deletecart()
     {
         $sosp = $_SESSION['sosp'] - 1;
         $_SESSION['sosp'] = $sosp;
@@ -207,9 +207,62 @@ class ajax extends Controller
             $product = json_decode($p, true);
             $num = $product[0]['num'] - $res['num'];
             $model->query("update tbl_product set num={$num} where idProduct={$res['id']}");
-            $model->query("insert into tbl_export(username,id_product,quantity,nameClient,addressClient,phoneClient) values('client',{$res['id']},{$res['num']},'{$_POST['n']}','{$_POST['dc']}','{$_POST['phone']}')");
+            $model->query("insert into tbl_order(username,id_product,quantity,nameClient,addressClient,phoneClient) values('client',{$res['id']},{$res['num']},'{$_POST['n']}','{$_POST['dc']}','{$_POST['phone']}')");
         }
         unset($_SESSION['client']);
         $this->viewAjax('thankyou');
+    }
+    function rate(){
+        $star=$_POST['star'];
+        $idproduct=$_POST['id'];
+        $md=$this->requireModel('productModel');
+        $data=json_decode($md->getAProduct($idproduct),true);
+        $numrate=$data[0]['numrate']+1;
+        $rate=(float)$data[0]['rate']+$star;
+        $avg=(float)$rate/$numrate;
+        $md->query("update tbl_product set numrate={$numrate},rate={$rate},avgrate={$avg} where idProduct={$idproduct}");
+    }
+    function orderpage(){
+        $this->viewAjax("order");
+    }
+    function allorder(){
+        $data=$this->requireModel("orderModel")->getAllOrder();
+        $this->viewAjax('listorder',['data'=>$data]);
+    }
+    function deleteorder(){
+        $id=$_POST['id'];
+        $this->requireModel('orderModel')->deleteorder($id);
+
+    }
+    function sendorder(){
+        $id=$_POST['id'];
+        $this->requireModel("orderModel")->setStatusSend($id);
+    }
+    function payorder(){
+        $id=$_POST['id'];
+        $this->requireModel("orderModel")->setStatusPay($id);
+
+    }
+    function getyetsend(){
+        echo $this->requireModel("orderModel")->getyetsend();
+    }
+    function getyetpay(){
+        echo $this->requireModel("orderModel")->getyetpay();
+    }
+    function allorderyetsend(){
+        $data=$this->requireModel("orderModel")->getAllOrderYetSend();
+        $this->viewAjax('listorder',['data'=>$data]);
+    }
+    function allorderyetpay(){
+        $data=$this->requireModel("orderModel")->getAllOrderYetPay();
+        $this->viewAjax('listorder',['data'=>$data]);
+    }
+    function searchorder(){
+        $ct=$_POST['ct'];
+        $sql = "select tbl_product.*,tbl_order.* from tbl_order,tbl_product where (tbl_product.idProduct=tbl_order.id_product) and (nameProduct like '%{$_POST['ct']}%' or id_order like '%{$_POST['ct']}%' or tbl_product.nameProduct like '%{$_POST['ct']}%')";
+        $data = $this->requireModel("orderModel")->getOrder($sql);
+        $res = [];
+        $res = json_decode($data, true);
+        $this->viewAjax('listorder',['data' => $res]);
     }
 }

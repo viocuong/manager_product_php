@@ -17,6 +17,11 @@ $(document).ready(function() {
             $("#listproduct").html(data);
         });
     });
+    $("#orderpage").click(function(){
+        $.post('./ajax/order',function(data){
+            $("#mainhome").html(data);
+        });
+    });
     
     
 });

@@ -235,5 +235,39 @@ a.font-menu1 {
   border-left:15px solid #2753d6 ;
 }
 .btncart:hover{
-  box-shadow: 0.1px 4px 3px 4px #9c9c9c;;
+  box-shadow: 0.1px 4px 3px 4px #9c9c9c;
+}
+.btnpink{
+  background-color: #e7305b;
+  color: #ffffff;
+}
+.btnpink:hover{
+  background-color: #d32049;
+  color: #ffffff;
+}
+.bgpink{
+  background-color: #e43f5a;
+}
+.clpink{
+  color: #e43f5a;
+}
+.btnorder{
+  color: #1cc88a;
+  border-left: 10px solid #1cc88a;
+}
+.clsuccess{
+  color: #1cc88a;
+}
+.btnorder:hover{
+  color: #009760;
+  border-left: 20px solid #06ad70;
+}
+.clblue{
+  color: #0061f2;
+}
+.clred{
+  color: #f40552;
+}
+.clred:hover{
+  color:#d80044
 }
