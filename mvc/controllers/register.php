@@ -12,7 +12,7 @@
                 $result = $md->excute("select * from tbl_account where userName='{$user}'");
                 $dataUser['pass']=$pass=$_POST['pass'];
                 $repass=$_POST['repass'];
-                $name=$_POST['fullname'];
+                
                 
                 //$phone=$_POST['numPhone'];
                 $dataUser['email']=$email=$_POST['email'];
