@@ -35,6 +35,17 @@
             </div>
         </div>
     </a>
+    <a id="tonkho" class="btn btncart col-md-3 mt-5 mb-5 rounded-lg m-1">
+
+        <div class="row p-4 justify-content-center">
+            Sản phẩm tồn kho
+        </div>
+        <div class="row p-3 bd d-flex justify-content-between m-0">
+            <div class="justify-content-center w-100">
+                <i style="font-size: 30px;" class="fas fa-warehouse"></i>
+            </div>
+        </div>
+    </a>
 
     <form class="row w-100 mb-5 md-form mt-0">
         <div class="input-group">
@@ -63,6 +74,11 @@
         $.post("./ajax/searchproduct", {
             ct: content
         }, function(data) {
+            $("#listproduct").html(data);
+        });
+    });
+    $("#tonkho").click(function(){
+        $.post('./ajax/tonkho',function(data){
             $("#listproduct").html(data);
         });
     });

@@ -27,7 +27,8 @@ class ajax extends Controller
         $name = $_POST['np'];
         $price = $_POST['pr'];
         $quantity = $_POST['ql'];
-        $sql = "insert into tbl_product(nameProduct,num,image,price,idCagetories) values('{$name}',{$quantity},'{$img}',{$price},{$idcagetories})";
+        $time = time();
+        $sql = "insert into tbl_product(nameProduct,num,image,price,idCagetories,seconds) values('{$name}',{$quantity},'{$img}',{$price},{$idcagetories},{$time})";
         $this->requireModel("productModel")->query($sql);
         echo "<i style='color:#a8df65;font-size: 28px;' class='mt-3 fas fa-check-circle'> Thêm thành công sản phẩm {$name}</i>";
     }
@@ -173,24 +174,25 @@ class ajax extends Controller
         </div>
         <button id='checkout' class='w-100 rounded-pill d-flex justify-content-center btn btnrounded p-2'>Tiến hành thanh toán</button>
         <script>
-    var check = 0;
-    var val = 0;
-    $(document).ready(function() {
-        $('#checkout').click(function() {
-            $.post('./ajax/checkout', function(data) {
-                $('#listproduct').html(data);
-            })
-        });
-    });
+            var check = 0;
+            var val = 0;
+            $(document).ready(function() {
+                $('#checkout').click(function() {
+                    $.post('./ajax/checkout', function(data) {
+                        $('#listproduct').html(data);
+                    });
+                });
+            });
     
-</script>
+        </script>
         ";
     }
     function updatenumcart()
     {
         echo count($_SESSION['client']);
     }
-    function updatenumcart0(){
+    function updatenumcart0()
+    {
         echo 0;
     }
     function checkout()
@@ -208,61 +210,86 @@ class ajax extends Controller
             $num = $product[0]['num'] - $res['num'];
             $model->query("update tbl_product set num={$num} where idProduct={$res['id']}");
             $model->query("insert into tbl_order(username,id_product,quantity,nameClient,addressClient,phoneClient) values('client',{$res['id']},{$res['num']},'{$_POST['n']}','{$_POST['dc']}','{$_POST['phone']}')");
+            $time = (int) time();
+            $model->query("update tbl_product set seconds={$time} where idProduct={$res['id']}");
         }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://fchat.vn/api/send?user_id=2809878489110430&block_id=5f075485f3dd8a6783320ecd&token=04b06a0b48add9f97b661b16a0bcc48d52ac1ca7");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
         unset($_SESSION['client']);
         $this->viewAjax('thankyou');
     }
-    function rate(){
-        $star=$_POST['star'];
-        $idproduct=$_POST['id'];
-        $md=$this->requireModel('productModel');
-        $data=json_decode($md->getAProduct($idproduct),true);
-        $numrate=$data[0]['numrate']+1;
-        $rate=(float)$data[0]['rate']+$star;
-        $avg=(float)$rate/$numrate;
+    function rate()
+    {
+        $star = $_POST['star'];
+        $idproduct = $_POST['id'];
+        $md = $this->requireModel('productModel');
+        $data = json_decode($md->getAProduct($idproduct), true);
+        $numrate = $data[0]['numrate'] + 1;
+        $rate = (float) $data[0]['rate'] + $star;
+        $avg = (float) $rate / $numrate;
         $md->query("update tbl_product set numrate={$numrate},rate={$rate},avgrate={$avg} where idProduct={$idproduct}");
     }
-    function orderpage(){
+    function orderpage()
+    {
         $this->viewAjax("order");
     }
-    function allorder(){
-        $data=$this->requireModel("orderModel")->getAllOrder();
-        $this->viewAjax('listorder',['data'=>$data]);
+    function allorder()
+    {
+        $data = $this->requireModel("orderModel")->getAllOrder();
+        $this->viewAjax('listorder', ['data' => $data]);
     }
-    function deleteorder(){
-        $id=$_POST['id'];
+    function deleteorder()
+    {
+        $id = $_POST['id'];
         $this->requireModel('orderModel')->deleteorder($id);
-
     }
-    function sendorder(){
-        $id=$_POST['id'];
+    function sendorder()
+    {
+        $id = $_POST['id'];
         $this->requireModel("orderModel")->setStatusSend($id);
     }
-    function payorder(){
-        $id=$_POST['id'];
+    function payorder()
+    {
+        $id = $_POST['id'];
         $this->requireModel("orderModel")->setStatusPay($id);
-
     }
-    function getyetsend(){
+    function getyetsend()
+    {
         echo $this->requireModel("orderModel")->getyetsend();
     }
-    function getyetpay(){
+    function getyetpay()
+    {
         echo $this->requireModel("orderModel")->getyetpay();
     }
-    function allorderyetsend(){
-        $data=$this->requireModel("orderModel")->getAllOrderYetSend();
-        $this->viewAjax('listorder',['data'=>$data]);
+    function allorderyetsend()
+    {
+        $data = $this->requireModel("orderModel")->getAllOrderYetSend();
+        $this->viewAjax('listorder', ['data' => $data]);
     }
-    function allorderyetpay(){
-        $data=$this->requireModel("orderModel")->getAllOrderYetPay();
-        $this->viewAjax('listorder',['data'=>$data]);
+    function allorderyetpay()
+    {
+        $data = $this->requireModel("orderModel")->getAllOrderYetPay();
+        $this->viewAjax('listorder', ['data' => $data]);
     }
-    function searchorder(){
-        $ct=$_POST['ct'];
+    function searchorder()
+    {
+        $ct = $_POST['ct'];
         $sql = "select tbl_product.*,tbl_order.* from tbl_order,tbl_product where (tbl_product.idProduct=tbl_order.id_product) and (nameProduct like '%{$_POST['ct']}%' or id_order like '%{$_POST['ct']}%' or tbl_product.nameProduct like '%{$_POST['ct']}%')";
         $data = $this->requireModel("orderModel")->getOrder($sql);
         $res = [];
         $res = json_decode($data, true);
-        $this->viewAjax('listorder',['data' => $res]);
+        $this->viewAjax('listorder', ['data' => $res]);
+    }
+    function tonkho()
+    {
+        $data = [];
+
+        $res = $this->requireModel("productModel")->getAllProduct();
+        $data = json_decode($res, true);
+
+        $this->viewajax('listproducttonkho', ['title' => 'Các sản phẩm', 'data' => $data]);
     }
 }

@@ -9,11 +9,7 @@
                 <input id="userdk" type="text" class="form-control" name="user">
                 <div id="messuser" style="color:red;"></div>
             </div>
-            <div class="form-group">
-                <label for="inpUser">Họ tên</label><span style="color:red;"><?php echo ' ' . $arr['error']['errorfullname']; ?></span>
-                <input id="" type="text" class="form-control" name="fullname">
-                <div id="messuser" style="color:red;"></div>
-            </div>
+            
             <div class="form-group">
                 <label for="inpPass">Mật khẩu</label><span style="color: red;"><?php echo ' ' . $arr['error']['errorpass']; ?></span>
                 <input id="passdk" type="password" class="form-control" name="pass">

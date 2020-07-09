@@ -1,5 +1,8 @@
 <?php
 $data = $arr['data'][0];
+$rate = (float) $data['avgrate'];
+$numrate=$data['numrate'];
+$star = round($rate * 2) / 2;
 ?>
 <div id="bodyproduct" class="clmilk mt-5 row justify-content-center bg-light rounded-lg shadow-lg mt-5 p-5 btt">
     <div class="row card w-100 mb-5">
@@ -73,10 +76,15 @@ $data = $arr['data'][0];
         </div>
     </div>
     <div class="row w-100 justify-content-center clblack pb-3">
-        Đánh giá của bạn cho sản phẩm này
+        <div class="row w-100 justify-content-center">
+            <div class="text-danger">Có <?php echo $numrate; ?> đánh giá cho sản phẩm này</div>
+        </div>
+        <div class=" row">
+            Rất mong nhận được đánh giá của bạn
+        </div>
     </div>
     <div class="row w-100 justify-content-center">
-        <div id="rate" class="rateit">
+        <div id="rate" data-rateit-value='<?php echo $star; ?>' data-rateit-mode="font" style="font-size: 40px;" class="rateit">
         </div>
     </div>
     <div id="submitrate" class="w-100 d-flex justify-content-center p-2">
@@ -145,9 +153,9 @@ $data = $arr['data'][0];
                 star: star,
                 id: idproduct
             }, function() {
-                alert('Cảm ơn bạn đã đánh giá '+star+'* cho sản phẩm này, chúng tôi ghi nhận đánh giá này để cải thiện sản phẩm');
+                alert('Cảm ơn bạn đã đánh giá ' + star + '* cho sản phẩm này, chúng tôi ghi nhận đánh giá này để cải thiện sản phẩm');
             });
-            
+
         });
     });
 </script>

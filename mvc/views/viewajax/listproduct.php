@@ -8,6 +8,7 @@
     <?php
     $data = $arr['data'];
     foreach ($data as $key => $value) {
+        $price=Functions::parse($data[$key]['price']);
         echo "
             <a onclick='detailProduct({$data[$key]['idProduct']})' class='rtl buttonproduct btn m-2 img-post col-3 p-4 bgproduct rounded-lg'>
                 <div class='row shadow-lg d-flex justify-content-center'>
@@ -19,14 +20,13 @@
                             <h5 id='nameproduct9'><i class='fas fa-tag mr-2'></i> {$data[$key]['nameProduct']}</h5>
                         </div>
                         <div class='row mt-3 justify-content-center'>
-                            <h5><i class='fas fa-money-bill-wave mr-2'></i> {$data[$key]['price']}</h5>
+                            <h5><i class='fas fa-money-bill-wave mr-2'></i> {$price}</h5>
                         </div>
                     </div>
                 </div>
             </a>";
     }
     ?>
-
 </div>
 <script>
     function detailProduct(idProduct) {
